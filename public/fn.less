@@ -1,0 +1,96 @@
+:root {
+  --coef: 1;
+}
+
+.squircle() {
+  corner-shape: squircle;
+}
+
+.squircle(@x) when (not(@x = '')) {
+  corner-shape: squircle;
+  border-radius: @x;
+}
+
+.superellipse(@x) when (default()) {
+  corner-shape: superellipse(calc(@x / var(--coef)));
+}
+
+.rounded-t-(@x) when (default()) {
+  border-top-left-radius: @x;
+  border-top-right-radius: @x;
+}
+.rounded-b-(@x) when (default()) {
+  border-bottom-left-radius: @x;
+  border-bottom-right-radius: @x;
+}
+.rounded-l-(@x) when (default()) {
+  border-top-left-radius: @x;
+  border-bottom-left-radius: @x;
+}
+.rounded-r-(@x) when (default()) {
+  border-top-right-radius: @x;
+  border-bottom-right-radius: @x;
+}
+.rounded-tl-(@x) when (default()) {
+  border-top-left-radius: @x;
+}
+.rounded-tr-(@x) when (default()) {
+  border-top-right-radius: @x;
+}
+.rounded-bl-(@x) when (default()) {
+  border-bottom-left-radius: @x;
+}
+.rounded-br-(@x) when (default()) {
+  border-bottom-right-radius: @x;
+}
+.rounded-(@x) when (default()) {
+  border-radius: @x;
+}
+
+.p-(@x) when (default()) {
+  padding: @x;
+}
+.px-(@x) when (default()) {
+  padding-left: @x;
+  padding-right: @x;
+}
+.py-(@x) when (default()) {
+  padding-top: @x;
+  padding-bottom: @x;
+}
+.pt-(@x) when (default()) {
+  padding-top: @x;
+}
+.pb-(@x) when (default()) {
+  padding-bottom: @x;
+}
+.pl-(@x) when (default()) {
+  padding-left: @x;
+}
+.pr-(@x) when (default()) {
+  padding-right: @x;
+}
+
+.m-(@x) when (default()) {
+  margin: @x;
+}
+.mx-(@x) when (default()) {
+  margin-left: @x;
+  margin-right: @x;
+}
+.my-(@x) when (default()) {
+  margin-top: @x;
+  margin-bottom: @x;
+}
+.mt-(@x) when (default()) {
+  margin-top: @x;
+}
+.mb-(@x) when (default()) {
+  margin-bottom: @x;
+}
+.ml-(@x) when (default()) {
+  margin-left: @x;
+}
+.mr-(@x) when (default()) {
+  margin-right: @x;
+}
