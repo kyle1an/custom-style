@@ -15,82 +15,109 @@
   corner-shape: superellipse(calc(@x / var(--coef)));
 }
 
-.rounded-t-(@x) when (default()) {
-  border-top-left-radius: @x;
-  border-top-right-radius: @x;
-}
-.rounded-b-(@x) when (default()) {
-  border-bottom-left-radius: @x;
-  border-bottom-right-radius: @x;
-}
-.rounded-l-(@x) when (default()) {
-  border-top-left-radius: @x;
-  border-bottom-left-radius: @x;
-}
-.rounded-r-(@x) when (default()) {
-  border-top-right-radius: @x;
-  border-bottom-right-radius: @x;
-}
-.rounded-tl-(@x) when (default()) {
-  border-top-left-radius: @x;
-}
-.rounded-tr-(@x) when (default()) {
-  border-top-right-radius: @x;
-}
-.rounded-bl-(@x) when (default()) {
-  border-bottom-left-radius: @x;
-}
-.rounded-br-(@x) when (default()) {
-  border-bottom-right-radius: @x;
-}
-.rounded-(@x) when (default()) {
-  border-radius: @x;
+.v(@maybe-property) {
+  @v: if(replace('@{maybe-property}', '^(.{2}).*', '$1') = '--', var(@maybe-property), @maybe-property);
 }
 
-.p-(@x) when (default()) {
-  padding: @x;
+.rounded-t-(@x) {
+  .v(@x);
+  border-top-left-radius: @v;
+  border-top-right-radius: @v;
 }
-.px-(@x) when (default()) {
-  padding-left: @x;
-  padding-right: @x;
+.rounded-b-(@x) {
+  .v(@x);
+  border-bottom-left-radius: @v;
+  border-bottom-right-radius: @v;
 }
-.py-(@x) when (default()) {
-  padding-top: @x;
-  padding-bottom: @x;
+.rounded-l-(@x) {
+  .v(@x);
+  border-top-left-radius: @v;
+  border-bottom-left-radius: @v;
 }
-.pt-(@x) when (default()) {
-  padding-top: @x;
+.rounded-r-(@x) {
+  .v(@x);
+  border-top-right-radius: @v;
+  border-bottom-right-radius: @v;
 }
-.pb-(@x) when (default()) {
-  padding-bottom: @x;
+.rounded-tl-(@x) {
+  .v(@x);
+  border-top-left-radius: @v;
 }
-.pl-(@x) when (default()) {
-  padding-left: @x;
+.rounded-tr-(@x) {
+  .v(@x);
+  border-top-right-radius: @v;
 }
-.pr-(@x) when (default()) {
-  padding-right: @x;
+.rounded-bl-(@x) {
+  .v(@x);
+  border-bottom-left-radius: @v;
+}
+.rounded-br-(@x) {
+  .v(@x);
+  border-bottom-right-radius: @v;
+}
+.rounded-(@x) {
+  .v(@x);
+  border-radius: @v;
 }
 
-.m-(@x) when (default()) {
-  margin: @x;
+.p-(@x) {
+  .v(@x);
+  padding: @v;
 }
-.mx-(@x) when (default()) {
-  margin-left: @x;
-  margin-right: @x;
+.px-(@x) {
+  .v(@x);
+  padding-left: @v;
+  padding-right: @v;
 }
-.my-(@x) when (default()) {
-  margin-top: @x;
-  margin-bottom: @x;
+.py-(@x) {
+  .v(@x);
+  padding-top: @v;
+  padding-bottom: @v;
 }
-.mt-(@x) when (default()) {
-  margin-top: @x;
+.pt-(@x) {
+  .v(@x);
+  padding-top: @v;
 }
-.mb-(@x) when (default()) {
-  margin-bottom: @x;
+.pb-(@x) {
+  .v(@x);
+  padding-bottom: @v;
 }
-.ml-(@x) when (default()) {
-  margin-left: @x;
+.pl-(@x) {
+  .v(@x);
+  padding-left: @v;
 }
-.mr-(@x) when (default()) {
-  margin-right: @x;
+.pr-(@x) {
+  .v(@x);
+  padding-right: @v;
+}
+
+.m-(@x) {
+  .v(@x);
+  margin: @v;
+}
+.mx-(@x) {
+  .v(@x);
+  margin-left: @v;
+  margin-right: @v;
+}
+.my-(@x) {
+  .v(@x);
+  margin-top: @v;
+  margin-bottom: @v;
+}
+.mt-(@x) {
+  .v(@x);
+  margin-top: @v;
+}
+.mb-(@x) {
+  .v(@x);
+  margin-bottom: @v;
+}
+.ml-(@x) {
+  .v(@x);
+  margin-left: @v;
+}
+.mr-(@x) {
+  .v(@x);
+  margin-right: @v;
 }
