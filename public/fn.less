@@ -20,104 +20,118 @@
 }
 
 .rounded-t-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   border-top-left-radius: @v;
   border-top-right-radius: @v;
 }
 .rounded-b-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   border-bottom-left-radius: @v;
   border-bottom-right-radius: @v;
 }
 .rounded-l-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   border-top-left-radius: @v;
   border-bottom-left-radius: @v;
 }
 .rounded-r-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   border-top-right-radius: @v;
   border-bottom-right-radius: @v;
 }
 .rounded-tl-(@x) {
-  .v(@x);
-  border-top-left-radius: @v;
+  border-top-left-radius: .v(@x) [];
 }
 .rounded-tr-(@x) {
-  .v(@x);
-  border-top-right-radius: @v;
+  border-top-right-radius: .v(@x) [];
 }
 .rounded-bl-(@x) {
-  .v(@x);
-  border-bottom-left-radius: @v;
+  border-bottom-left-radius: .v(@x) [];
 }
 .rounded-br-(@x) {
-  .v(@x);
-  border-bottom-right-radius: @v;
+  border-bottom-right-radius: .v(@x) [];
 }
 .rounded-(@x) {
-  .v(@x);
-  border-radius: @v;
+  border-radius: .v(@x) [];
 }
 
 .p-(@x) {
-  .v(@x);
-  padding: @v;
+  padding: .v(@x) [];
 }
 .px-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   padding-left: @v;
   padding-right: @v;
 }
 .py-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   padding-top: @v;
   padding-bottom: @v;
 }
 .pt-(@x) {
-  .v(@x);
-  padding-top: @v;
+  padding-top: .v(@x) [];
 }
 .pb-(@x) {
-  .v(@x);
-  padding-bottom: @v;
+  @v: .v(@x) [];
+  padding-bottom: .v(@x) [];
 }
 .pl-(@x) {
-  .v(@x);
-  padding-left: @v;
+  padding-left: .v(@x) [];
 }
 .pr-(@x) {
-  .v(@x);
-  padding-right: @v;
+  padding-right: .v(@x) [];
 }
 
 .m-(@x) {
-  .v(@x);
-  margin: @v;
+  margin: .v(@x) [];
 }
 .mx-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   margin-left: @v;
   margin-right: @v;
 }
 .my-(@x) {
-  .v(@x);
+  @v: .v(@x) [];
   margin-top: @v;
   margin-bottom: @v;
 }
 .mt-(@x) {
-  .v(@x);
-  margin-top: @v;
+  margin-top: .v(@x) [];
 }
 .mb-(@x) {
-  .v(@x);
-  margin-bottom: @v;
+  margin-bottom: .v(@x) [];
 }
 .ml-(@x) {
-  .v(@x);
-  margin-left: @v;
+  margin-left: .v(@x) [];
 }
 .mr-(@x) {
-  .v(@x);
-  margin-right: @v;
+  margin-right: .v(@x) [];
+}
+
+.bg-(@x) {
+  background-color: .v(@x) [];
+}
+
+.w-(@x) {
+  width: .v(@x) [];
+}
+.h-(@x) {
+  height: .v(@x) [];
+}
+.size-(@x) {
+  @v: .v(@x) [];
+  width: @v;
+  height: @v;
+}
+.min-w-(@x) {
+  min-width: .v(@x) [];
+}
+.min-h-(@x) {
+  min-height: .v(@x) [];
+}
+.max-w-(@x) {
+  max-width: .v(@x) [];
+}
+.max-h-(@x) {
+  max-height: .v(@x) [];
 }
