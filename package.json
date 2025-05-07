@@ -1,0 +1,13 @@
+{
+  "name": "custom-style",
+  "version": "1.0.0",
+  "description": "",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/less": "^3.0.8",
+    "less": "^4.3.0"
+  }
+}

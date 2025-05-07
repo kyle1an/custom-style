@@ -1,18 +1,14 @@
-:root {
-  --coef: 1;
-}
-
 .squircle() {
   corner-shape: squircle;
 }
 
 .squircle(@x) when (not(@x = '')) {
   corner-shape: squircle;
-  border-radius: @x;
+  border-radius: .v(@x) [];
 }
 
 .superellipse(@x) when (default()) {
-  corner-shape: superellipse(calc(@x / var(--coef)));
+  corner-shape: superellipse(calc(@x / var(--exponent-modifier, 1)));
 }
 
 .v(@maybe-property) {
