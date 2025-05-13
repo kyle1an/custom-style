@@ -1,0 +1,1 @@
+----= ss, x.microsoft.com, 18300, encrypt-method=aes-128-gcm, password=password, obfs=http, obfs-host=x.microsoft.com, tfo=true, udp-relay=true
