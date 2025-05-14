@@ -1,0 +1,93 @@
+@formats: {
+  @ttf: TrueType;
+  @otf: OpenType;
+  @woff: woff;
+  @woff2: woff2;
+};
+
+.at-font-faces(@families, @tar, @weight-map, @uni-ranges, @local: false, @alt: false, @pri: '') {
+  each(@families, .(@family) {
+      each(@weight-map .(@val ) {
+        @weight-numeric: extract(@val, 1);
+        @weight-keyword: extract(@val, 2);
+        @weight-keyword2: extract(@val, 3);
+        each( {
+          normal: '';
+          italic: 'Italic';
+        }
+
+        , .(@style-val, @style-key) {
+          // @keyword: extract(@weight, 1);
+          // @weight-numeric: extract(@weight, 2);
+          @font-face {
+            font-family: @family;
+            @nam: @tar[nam];
+            @dir: @tar[dir];
+            @ext: @tar[ext];
+            @format: @formats[@@ext];
+            @italic: if(@style-val='', e(''), ' Italic');
+            src: if(@alt, local('@{pri} @{weight-keyword2}@{italic}') e(',') local('@{pri}') e(','), ) if(@local, local('@{nam} @{weight-keyword}@{italic}') e(',') local('@{nam} @{weight-keyword}') e(',') local('@{nam} @{italic}') e(',') local('@{nam}') e(','), ) url('@{url-path-prefix}@{dir}@{weight-keyword}@{style-val}.@{ext}') format('@{format}');
+            unicode-range: @uni-ranges;
+            font-weight: @weight-numeric;
+            font-style: @style-key;
+            font-display: swap; // https://gist.github.com/xiaochengh/da1fa52648d6184fd8022d7134c168c1
+            // https://youtu.be/Z6wjUOSh9Tk?t=271
+            /*   ascent-override: 125%; */
+            /*   descent-override: 25%; */
+            /*   line-gap-override: 0%; */
+          }
+        }
+        )
+      }
+      )
+    }
+    );
+}
+
+.at-local-font-faces(@families,
+  @tar,
+  @weight-map,
+  @uni-ranges,
+  @local: false) {
+  each(@families,
+    .(@family) {
+      @font-face {
+        font-family: @family;
+        src: local(@family);
+        unicode-range: @uni-ranges;
+        /*        font-display: swap; */
+      }
+    }
+
+    );
+}
+
+.at-stretch-font-faces(@families,
+  @tar,
+  @weight-map,
+  @uni-ranges,
+  @local: false) {
+  each(@families,
+    .(@family) {
+      each(@weight-map .(@val ) {
+        @weight-numeric: extract(@val, 1);
+        @weight-keyword: extract(@val, 2);
+        @font-face {
+          font-family: @family;
+          @nam: @tar[nam];
+          @dir: @tar[dir];
+          @ext: @tar[ext];
+          @format: @formats[@@ext];
+          src: if(@local, local('@{nam} Condensed @{weight-keyword}') e(','), ) url('@{url-path-prefix}@{dir}.@{ext}') format('@{format}');
+          unicode-range: @uni-ranges;
+          font-weight: @weight-numeric;
+          font-stretch: condensed;
+          font-display: swap;
+        }
+      }
+
+      )
+    }
+
+    );
+}

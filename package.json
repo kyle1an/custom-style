@@ -1,6 +1,7 @@
 {
   "name": "custom-style",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.10.0",
   "description": "",
   "type": "commonjs",
   "scripts": {
