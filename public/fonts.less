@@ -5,89 +5,90 @@
   @woff2: woff2;
 };
 
-.at-font-faces(@families, @tar, @weight-map, @uni-ranges, @local: false, @alt: false, @pri: '') {
-  each(@families, .(@family) {
-      each(@weight-map .(@val ) {
-        @weight-numeric: extract(@val, 1);
-        @weight-keyword: extract(@val, 2);
-        @weight-keyword2: extract(@val, 3);
-        each( {
-          normal: '';
-          italic: 'Italic';
-        }
+.at-font-faces(
+  @__families__, 
+  @__target__,
+  @__weights__,
+  @__unicode_range__,
+  @__local__: false,
+  @__alt__: false,
+  @__pri__: ''
+) {
+  each(@__families__, .(@__family__) {
+    each(@__weights__, .(@__weight__ ) {
+      @__weight_numeric__: extract(@__weight__, 1);
+      @__weight_keyword__: extract(@__weight__, 2);
+      @__weight_keyword2__: extract(@__weight__, 3);
 
-        , .(@style-val, @style-key) {
-          // @keyword: extract(@weight, 1);
-          // @weight-numeric: extract(@weight, 2);
-          @font-face {
-            font-family: @family;
-            @nam: @tar[nam];
-            @dir: @tar[dir];
-            @ext: @tar[ext];
-            @format: @formats[@@ext];
-            @italic: if(@style-val='', e(''), ' Italic');
-            src: if(@alt, local('@{pri} @{weight-keyword2}@{italic}') e(',') local('@{pri}') e(','), ) if(@local, local('@{nam} @{weight-keyword}@{italic}') e(',') local('@{nam} @{weight-keyword}') e(',') local('@{nam} @{italic}') e(',') local('@{nam}') e(','), ) url('@{url-path-prefix}@{dir}@{weight-keyword}@{style-val}.@{ext}') format('@{format}');
-            unicode-range: @uni-ranges;
-            font-weight: @weight-numeric;
-            font-style: @style-key;
-            font-display: swap; // https://gist.github.com/xiaochengh/da1fa52648d6184fd8022d7134c168c1
-            // https://youtu.be/Z6wjUOSh9Tk?t=271
-            /*   ascent-override: 125%; */
-            /*   descent-override: 25%; */
-            /*   line-gap-override: 0%; */
-          }
-        }
-        )
-      }
-      )
-    }
-    );
-}
-
-.at-local-font-faces(@families,
-  @tar,
-  @weight-map,
-  @uni-ranges,
-  @local: false) {
-  each(@families,
-    .(@family) {
-      @font-face {
-        font-family: @family;
-        src: local(@family);
-        unicode-range: @uni-ranges;
-        /*        font-display: swap; */
-      }
-    }
-
-    );
-}
-
-.at-stretch-font-faces(@families,
-  @tar,
-  @weight-map,
-  @uni-ranges,
-  @local: false) {
-  each(@families,
-    .(@family) {
-      each(@weight-map .(@val ) {
-        @weight-numeric: extract(@val, 1);
-        @weight-keyword: extract(@val, 2);
+      each({
+        normal: '';
+        italic: 'Italic';
+      }, .(@style-val, @style-key) {
+        // @keyword: extract(@weight, 1);
+        // @__weight_numeric__: extract(@weight, 2);
         @font-face {
-          font-family: @family;
-          @nam: @tar[nam];
-          @dir: @tar[dir];
-          @ext: @tar[ext];
+          font-family: @__family__;
+          @nam: @__target__[nam];
+          @dir: @__target__[dir];
+          @ext: @__target__[ext];
           @format: @formats[@@ext];
-          src: if(@local, local('@{nam} Condensed @{weight-keyword}') e(','), ) url('@{url-path-prefix}@{dir}.@{ext}') format('@{format}');
-          unicode-range: @uni-ranges;
-          font-weight: @weight-numeric;
-          font-stretch: condensed;
-          font-display: swap;
+          @italic: if(@style-val='', e(''), ' Italic');
+          src: if(@__alt__, local('@{__pri__} @{__weight_keyword2__}@{italic}') e(',') local('@{__pri__}') e(','), ) if(@__local__, local('@{nam} @{__weight_keyword__}@{italic}') e(',') local('@{nam} @{__weight_keyword__}') e(',') local('@{nam} @{italic}') e(',') local('@{nam}') e(','), ) url('@{url-path-prefix}@{dir}@{__weight_keyword__}@{style-val}.@{ext}') format('@{format}');
+          unicode-range: @__unicode_range__;
+          font-weight: @__weight_numeric__;
+          font-style: @style-key;
+          font-display: swap; // https://gist.github.com/xiaochengh/da1fa52648d6184fd8022d7134c168c1
+          // https://youtu.be/Z6wjUOSh9Tk?t=271
+          /*   ascent-override: 125%; */
+          /*   descent-override: 25%; */
+          /*   line-gap-override: 0%; */
         }
-      }
+      })
+    })
+  });
+}
 
-      )
+.at-local-font-faces(
+  @__families__,
+  @__target__,
+  @__weights__,
+  @__unicode_range__,
+  @__local__: false
+) {
+  each(@__families__, .(@__family__) {
+    @font-face {
+      font-family: @__family__;
+      src: local(@__family__);
+      unicode-range: @__unicode_range__;
+      /*        font-display: swap; */
     }
+  });
+}
 
-    );
+.at-stretch-font-faces(
+  @__families__,
+  @__target__,
+  @__weights__,
+  @__unicode_range__,
+  @__local__: false
+) {
+  each(@__families__, .(@__family__) {
+    each(@__weights__, .(@__weight__ ) {
+      @__weight_numeric__: extract(@__weight__, 1);
+      @__weight_keyword__: extract(@__weight__, 2);
+
+      @font-face {
+        font-family: @__family__;
+        @nam: @__target__[nam];
+        @dir: @__target__[dir];
+        @ext: @__target__[ext];
+        @format: @formats[@@ext];
+        src: if(@__local__, local('@{nam} Condensed @{__weight_keyword__}') e(','), ) url('@{url-path-prefix}@{dir}.@{ext}') format('@{format}');
+        unicode-range: @__unicode_range__;
+        font-weight: @__weight_numeric__;
+        font-stretch: condensed;
+        font-display: swap;
+      }
+    })
+  });
 }
