@@ -32,16 +32,30 @@
           @dir: @__target__[dir];
           @ext: @__target__[ext];
           @format: @formats[@@ext];
-          @italic: if(@style-val='', e(''), ' Italic');
-          src: if(@__alt__, local('@{__pri__} @{__weight_keyword2__}@{italic}') e(',') local('@{__pri__}') e(','), ) if(@__local__, local('@{nam} @{__weight_keyword__}@{italic}') e(',') local('@{nam} @{__weight_keyword__}') e(',') local('@{nam} @{italic}') e(',') local('@{nam}') e(','), ) url('@{url-path-prefix}@{dir}@{__weight_keyword__}@{style-val}.@{ext}') format('@{format}');
+          @italic: if(@style-val=''
+            ,e('')
+            ,' Italic'
+          );
+
+          src:
+            if(@__alt__
+              ,local('@{__pri__} @{__weight_keyword2__}@{italic}') e(',') local('@{__pri__}') e(',')
+              ,
+            )
+            if(@__local__
+              ,local('@{nam} @{__weight_keyword__}@{italic}') e(',') local('@{nam} @{__weight_keyword__}') e(',') local('@{nam} @{italic}') e(',') local('@{nam}') e(',')
+              ,
+            )
+            url('@{url-path-prefix}@{dir}@{__weight_keyword__}@{style-val}.@{ext}') format('@{format}');
           unicode-range: @__unicode_range__;
           font-weight: @__weight_numeric__;
           font-style: @style-key;
-          font-display: swap; // https://gist.github.com/xiaochengh/da1fa52648d6184fd8022d7134c168c1
+          font-display: swap; 
+          // https://gist.github.com/xiaochengh/da1fa52648d6184fd8022d7134c168c1
           // https://youtu.be/Z6wjUOSh9Tk?t=271
-          /*   ascent-override: 125%; */
-          /*   descent-override: 25%; */
-          /*   line-gap-override: 0%; */
+          // ascent-override: 125%;
+          // descent-override: 25%;
+          //  line-gap-override: 0%
         }
       })
     })
@@ -60,7 +74,7 @@
       font-family: @__family__;
       src: local(@__family__);
       unicode-range: @__unicode_range__;
-      /*        font-display: swap; */
+      // font-display: swap;
     }
   });
 }
@@ -83,7 +97,12 @@
         @dir: @__target__[dir];
         @ext: @__target__[ext];
         @format: @formats[@@ext];
-        src: if(@__local__, local('@{nam} Condensed @{__weight_keyword__}') e(','), ) url('@{url-path-prefix}@{dir}.@{ext}') format('@{format}');
+        src: 
+          if(@__local__
+            ,local('@{nam} Condensed @{__weight_keyword__}') e(',')
+            ,
+          )
+          url('@{url-path-prefix}@{dir}.@{ext}') format('@{format}');
         unicode-range: @__unicode_range__;
         font-weight: @__weight_numeric__;
         font-stretch: condensed;
