@@ -8,7 +8,11 @@
 }
 
 .superellipse(@x) when (default()) {
-  corner-shape: superellipse(calc(@x / var(--exponent-modifier, 1)));
+  corner-shape: superellipse(calc(@x / 2));
+}
+
+.superellipse-(@x) when (default()) {
+  corner-shape: superellipse(@x);
 }
 
 .v(@maybe-property) {
